@@ -1,4 +1,3 @@
-
 var __API_URL__ = 'http://localhost:3000/api/v1/books';
 console.log('this is a test of book.js');
 
