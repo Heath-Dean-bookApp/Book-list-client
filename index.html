@@ -3,19 +3,52 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="/styles/reset.css">
+    <link rel="stylesheet" href="/vendor/styles/icons.css">
     <link rel="stylesheet" href="/styles/base.css">
     <link rel="stylesheet" href="/styles/layout.css">
     <link rel="stylesheet" href="/styles/module.css">
+    <link rel="icon" type="image/x-icon" href="https://avatars2.githubusercontent.com/u/18607604?v=3&s=200">
     <title>Book Time With Tim!</title>
-    <scriptid="book-list-template" type="text/x-handlebars-template">
-      <section>
+    <script id="book-list-template" type="text/x-handlebars-template">
+      <section class="clearfix">
+        <div>
+          <img class=book-img src="{{{image_url}}}">
+          <h2>{{title}}<br>{{author}}</h2>
+        </div>
     </script>
   </head>
   <body>
     <header>
-      <h1>Book Time with Tim!</h1>
+      <h1>Book Time With Tim!</h1>
+      <nav class="main-nav">
+        <div class="icon-menu"></div>
+        <ul>
+          <li class="tab" data-content="books"><a href="#" class="icon-home"> Home</a></li>
+          <li class="tab" data-content="about"><a href="#" class="icon-address-book"> About</a></li>
     </header>
-    <main>
+    <main class="clearfix">
+      <h3>My Books</h3>
+        <dt>Total Books:</dt><dd class="books"></dd>
+      <section id="books" class="tab-content">
+      </section>
+      <section id="about" class="tab-content">
+        <header>
+          Welcome to Book Time With Tim!
+        </header>
+        <section>
+          <h5>Meet the Tims! </h5>
+          <p> Our Interests:</p>
+          <ul>
+            <li>Coding</li>
+            <li>Being given new names</li>
+            <li>Barely looking like each other</li>
+          </ul>
+          <h6>About Our App!</h6>
+            <p>Our app is a list of all books that can be found on Google Books! It's to help the user develop more of an interest in reading by being able to find books that they're interested in.</p>
+        </section>
+      </section>
     </main>
+    <footer>
+    </footer>
   </body>
 </html>
