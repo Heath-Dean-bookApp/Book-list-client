@@ -10,11 +10,11 @@ function Book(bookDataObj) {
 
 Book.all = [];
 
-Book.prototype.toHtml = function() {
-  var template = Handlebars.compile($('#book-list-template').text());
-
-  return template(this);
-};
+// Book.prototype.toHtml = function() {
+//   var template = Handlebars.compile($('#book-list-template').text());
+//
+//   return template(this);
+// };
 
 Book.loadAll = function(rows) {
   rows.sort((a,b) => a.title - b.title);
@@ -29,3 +29,7 @@ Book.fetchAll = function (callback) {
       if (callback) callback();
     })
 };
+
+$(document).ready(() => {
+  Book.fetchAll();
+});
