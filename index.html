@@ -7,8 +7,12 @@
     <link rel="stylesheet" href="/styles/layout.css">
     <link rel="stylesheet" href="/styles/module.css">
     <title>Book Time With Tim!</title>
-    <scriptid="book-list-template" type="text/x-handlebars-template">
-      <section>
+    <script id="book-list-template" type="text/x-handlebars-template">
+      <section class="clearfix">
+        <div>
+          <img src="{{{image_url}}}">
+          <h2>{{title}}<br>{{author}}</h2>
+        </div>
     </script>
   </head>
   <body>
