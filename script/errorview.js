@@ -1,6 +1,6 @@
 'use strict';
 
-var errorView = {};
+let errorView = {};
 
 errorView.initErrorPage = (err) => {
   let template = Handlebars.compile($('#error-template'))
