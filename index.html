@@ -10,17 +10,22 @@
     <link rel="icon" type="image/x-icon" href="https://avatars2.githubusercontent.com/u/18607604?v=3&s=200">
     <title>Book Time With Tim!</title>
     <script id="book-list-template" type="text/x-handlebars-template">
-      <section class="clearfix">
+      <section class="clearfix" "container">
         <div>
-          <img class=book-img src="{{{image_url}}}">
+          <img class="book-img" src="{{{image_url}}}">
           <h2>{{title}}<br>{{author}}</h2>
         </div>
+      </section>
     </script>
+    <script id="error-template" type="text/x-handlebars-template">
+      <section class="clearfix" "error-view">
+
+      </section>
   </head>
   <body>
     <header>
       <h1>Book Time With Tim!</h1>
-      <nav class="main-nav">
+      <nav class="main-nav" "container">
         <ul>
           <li class="tab" data-content="books"><a href="#" class="icon-home"> Home</a></li>
           <li class="tab" data-content="about"><a href="#" class="icon-address-book"> About</a></li>
@@ -28,9 +33,9 @@
     <main class="clearfix">
       <h3>My Books</h3>
         <dt>Total Books:</dt><dd class="books"></dd>
-      <section id="books" class="tab-content">
+      <section id="books" class="tab-content" "container">
       </section>
-      <section id="about" class="tab-content">
+      <section id="about" class="tab-content" "container">
         <header>
           Welcome to Book Time With Tim!
         </header>
@@ -45,6 +50,9 @@
           <h6>About Our App!</h6>
             <p>Our app is a list of all books that can be found on Google Books! It's to help the user develop more of an interest in reading by being able to find books that they're interested in.</p>
         </section>
+      </section>
+      <section class="error-view">
+        <img
       </section>
     </main>
     <footer>
