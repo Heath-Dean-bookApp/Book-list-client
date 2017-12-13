@@ -7,9 +7,10 @@ var app = app || {};
 
   //shows all the books on the home page
   bookView.initIndexPage = function() {
+    console.log('this is inside the initIndexPage');
     $('.container').hide();
     $('.book-view').show();
-    module.Book.all.map(book => $(`#book-list`).append(book.toHtml()));
+    app.Book.all.map(book => $(`#book-list`).append(book.toHtml()));
   }
 
   //shows just a single book
@@ -27,7 +28,7 @@ var app = app || {};
   }
 
 
-  // getting the info from the inputs for the book
+  getting the info from the inputs for the book
   bookView.create = () => {
     var book;
     $('#new-form').empty();
@@ -61,6 +62,6 @@ var app = app || {};
   module.bookView = bookView;
 }) (app)
 
-$(function() {
-  app.Book.fetchAll(app.bookView.initIndexPage);
-})
+// $(function() {
+//   app.Book.fetchAll(app.bookView.initIndexPage);
+// })

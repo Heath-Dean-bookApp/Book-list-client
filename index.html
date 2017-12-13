@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="styles/modules/book-main.css">
     <link rel="icon" type="image/x-icon" href="https://avatars2.githubusercontent.com/u/18607604?v=3&s=200">
     <title>Book Time With Tim!</title>
+    <base href=".">
     <!-- this is for the error -->
     <script type="text/x-handlebars-template" id="error-template">
       <h3>Opps, something went wrong!</h3>
@@ -27,7 +28,7 @@
     </script>
 
     <script id="detail-view-template" type="text/x-handlebars-template">
-      <section class="detail-view-container">
+      <section class="detail-view container">
         <article class="detail-view" "clearfix" data-author="{{author}}" data-isbn="{{isbn}}">
           <header>
             <h6>{{title}}</h6>
@@ -37,6 +38,7 @@
             <p id="book-description">{{description}}</p>
           </div>
       </section>
+    </script>
 
   </head>
   <body>
@@ -110,7 +112,6 @@
     <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
-    <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
     <script src="script/models/book.js"></script>
     <script src="script/views/book-view.js"></script>
     <script src="script/views/errorview.js"></script>
