@@ -26,6 +26,18 @@
       </li>
     </script>
 
+    <script id="detail-view-template" type="text/x-handlebars-template">
+      <section class="detail-view-container">
+        <article class="detail-view" "clearfix" data-author="{{author}}" data-isbn="{{isbn}}">
+          <header>
+            <h6>{{title}}</h6>
+          </header>
+          <div class="book-details">
+            <img id="book-image" src="{{image_url}}">
+            <p id="book-description">{{description}}</p>
+          </div>
+      </section>
+
   </head>
   <body>
     <header>
@@ -45,6 +57,10 @@
             </ul>
         </section>
       </section>
+
+      <section class="detail-view-container">
+      </section>
+
 
       <section class="new-book-form">
         <h4>Add New Book</h4>
