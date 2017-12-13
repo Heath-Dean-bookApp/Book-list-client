@@ -35,17 +35,5 @@ var app = app || {};
       .then(callback)
       .catch(errorCallback);
 
-  // Book.fetchAll = function (callback) {
-  //   $.get(`${__API_URL__}/api/v1/books`)
-  //     .then(data => {
-  //       Book.loadAll(data)
-  //       if (callback) callback();
-  //     })
-  // };
   module.Book = Book;
 }) (app)
-
-// dont need this maybe?
-// $(document).ready(() => {
-//   app.Book.fetchAll();
-// });
