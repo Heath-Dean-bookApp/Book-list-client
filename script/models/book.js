@@ -23,6 +23,12 @@ var app = app || {};
     return template(this);
   };
 
+  Book.prototype.insertRecord = function(callback) {
+    $.post('/books/new', {title: this.title, author: this.author, isbn: this.isbn, image_url: this.image_url, description: this.description})
+      .then(console.log)
+      .then(callback);
+  };
+
   Book.loadAll = function(rows) {
     rows.sort((a,b) => a.title - b.title);
     rows.map(row => Book.all.push(new Book(row)));
