@@ -1,8 +1,8 @@
 'use strict';
 
 
-page('/', homeView.init);
-page('/about', aboutView.init);
-page('/contact', contactView.init);
+page('/', app.bookView.initIndexPage);
+page('/books/:book_id', app.bookView.initSingleBookPage);
+page('/books/new', app.bookView.initNewBookPage);
 
 page();

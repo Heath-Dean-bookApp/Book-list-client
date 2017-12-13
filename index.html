@@ -26,6 +26,18 @@
       </li>
     </script>
 
+    <script id="detail-view-template" type="text/x-handlebars-template">
+      <section class="detail-view-container">
+        <article class="detail-view" "clearfix" data-author="{{author}}" data-isbn="{{isbn}}">
+          <header>
+            <h6>{{title}}</h6>
+          </header>
+          <div class="book-details">
+            <img id="book-image" src="{{image_url}}">
+            <p id="book-description">{{description}}</p>
+          </div>
+      </section>
+
   </head>
   <body>
     <header>
@@ -46,6 +58,27 @@
         </section>
       </section>
 
+      <section class="new-book-form">
+        <h4>Add New Book</h4>
+        <form action="#" id="new-form">
+          <label>
+            <input type="text" id="book-title" placeholder="Book Title" required>
+          </label>
+          <label>
+            <input type="text" id="book-author" placeholder="Book Author" required>
+          </label>
+          <label>
+            <input type="text" id="book-isbn" placeholder="ISBN" required>
+          </label>
+          <label>
+            <input type="text" id="book-image-url" placeholer="Image URL" required>
+          </label>
+          <label>
+            <textarea id="book-description" rows="8" cols="40" required></textarea>
+          </label>
+          <button type="submit" id="new-book-button">Submit New Book</button>
+        </form>
+      </section>
 
       <section id="about" class="tab-content container">
 
@@ -77,9 +110,11 @@
     <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+    <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
     <script src="script/models/book.js"></script>
     <script src="script/views/book-view.js"></script>
     <script src="script/views/errorview.js"></script>
+    <script src="script/views/routes.js"></script>
     <script>
       // Book.fetchAll();
     </script>
