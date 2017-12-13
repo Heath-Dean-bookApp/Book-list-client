@@ -1,7 +1,9 @@
 'use strict';
 
+
 var errorView = {};
 var app = app || {};
+
 
 (function(module) {
   errorView.initErrorPage = (err) => {
