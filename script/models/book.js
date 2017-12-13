@@ -23,10 +23,11 @@ var app = app || {};
     return template(this);
   };
 
-  Book.prototype.insertRecord = function(callback) {
-    $.post('/books/new', {title: this.title, author: this.author, isbn: this.isbn, image_url: this.image_url, description: this.description})
+  Book.insertRecord = function(book) {
+    $.post(`${__API_URL__}/api/v1/books`, book)
       .then(console.log)
-      .then(callback);
+      .then(() => page('/'))
+
   };
 
   Book.loadAll = function(rows) {

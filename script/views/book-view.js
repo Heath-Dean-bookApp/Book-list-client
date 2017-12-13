@@ -24,11 +24,25 @@ var app = app || {};
   bookView.initNewBookPage = () => {
     $('.container').hide();
     $('.new-book-form').show();
-    $('#new-form').on('submit', bookView.submit);
-  }
+    $('#new-form').on('submit', function(event) {
+      event.preventDefault();
+      let book = new app.Book({
+        title: $('#book-title').val(),
+        author: $('#book-author').val(),
+        isbn: $('#book-isbn').val(),
+        image_url: $('#book-image-url').val(),
+        description: $('#book-description').val(),
+      });
+
+      app.Book.insertRecord(book);
 
 
-  getting the info from the inputs for the book
+    }
+    )};
+
+
+  // getting the info from the inputs for the book
+
   bookView.create = () => {
     var book;
     $('#new-form').empty();
@@ -44,22 +58,23 @@ var app = app || {};
     $('#new-form').append(book.toHtml());
   };
 
-  bookView.submit = event => {
-    event.preventDefault();
-    let book = new app.Book({
-      title: $('#book-title').val(),
-      author: $('#book-author').val(),
-      isbn: $('#book-isbn').val(),
-      image_url: $('#book-image-url').val(),
-      description: $('#book-description').val(),
-    });
-
-    app.Book.insertRecord();
-
-    window.location = '../';
-  }
+  // bookView.submit = event => {
+  //   event.preventDefault();
+  //   let book = new app.Book({
+  //     title: $('#book-title').val(),
+  //     author: $('#book-author').val(),
+  //     isbn: $('#book-isbn').val(),
+  //     image_url: $('#book-image-url').val(),
+  //     description: $('#book-description').val(),
+  //   });
+  //
+  //   app.Book.insertRecord(book);
+  //
+  //   window.location = '../';
+  // }
 
   module.bookView = bookView;
+
 }) (app)
 
 // $(function() {
