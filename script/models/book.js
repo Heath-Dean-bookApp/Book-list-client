@@ -22,12 +22,12 @@ var app = app || {};
     var template = Handlebars.compile($('#book-list-template').text());
     return template(this);
   };
-
-  Book.prototype.insertRecord = function(callback) {
-    $.post('/books/new', {title: this.title, author: this.author, isbn: this.isbn, image_url: this.image_url, description: this.description})
-      .then(console.log)
-      .then(callback);
-  };
+  //
+  // Book.prototype.insertRecord = function(callback) {
+  //   $.post('/books/new', {title: this.title, author: this.author, isbn: this.isbn, image_url: this.image_url, description: this.description})
+  //     .then(console.log)
+  //     .then(callback);
+  // };
 
   Book.loadAll = function(rows) {
     rows.sort((a,b) => a.title - b.title);
@@ -41,13 +41,13 @@ var app = app || {};
       .then(callback)
       .catch(errorCallback);
   }
-
-  Book.fetchOne = callback => {
-    $.get(`${__API_URL__}/api/v1/books/:id`)
-      .then(Book.loadAll)
-      .then(callback)
-      .catch(errorCallback);
-  }
+  //
+  // Book.fetchOne = callback => {
+  //   $.get(`${__API_URL__}/api/v1/books/:id`)
+  //     .then(Book.loadAll)
+  //     .then(callback)
+  //     .catch(errorCallback);
+  // }
 
   module.Book = Book;
 }) (app)
