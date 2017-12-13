@@ -12,7 +12,15 @@ var app = app || {};
     module.Book.all.map(book => $(`#book-list`).append(book.toHtml()));
   }
 
-  bookView.initNewbookPage = () => {
+  //shows just a single book
+  bookView.initSingleBookPage = function() {
+    $('.container').hide();
+    $('.detail-view-container').show();
+    module.Book.all.map(book => $(`.detail-view`).append(book.toHtml()));
+  }
+
+  //shows just the entry inputs for the new book.
+  bookView.initNewBookPage = () => {
     $('.container').hide();
     $('.new-book-form').show();
     $('#new-form').on('submit', bookView.submit);
