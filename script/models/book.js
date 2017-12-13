@@ -29,11 +29,19 @@ var app = app || {};
     console.log('load all book.all', Book.all);
   };
 
-  Book.fetchAll = callback =>
+  Book.fetchAll = callback => {
     $.get(`${__API_URL__}/api/v1/books`)
       .then(Book.loadAll)
       .then(callback)
       .catch(errorCallback);
+  }
+
+  Book.fetchOne = callback => {
+    $.get(`${__API_URL__}/api/v1/books/:id`)
+      .then(Book.loadAll)
+      .then(callback)
+      .catch(errorCallback);
+  }
 
   module.Book = Book;
 }) (app)
