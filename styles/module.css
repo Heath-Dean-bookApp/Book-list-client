@@ -1,0 +1,22 @@
+.icon-menu {
+  float: right;
+}
+
+.main-nav {
+   margin-top: 30px;
+}
+
+.book-view h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.book-items {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.book-items  img {
+  width: 80%;
+  margin: 0 auto;
+}
