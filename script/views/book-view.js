@@ -28,36 +28,36 @@ var app = app || {};
   }
 
 
-  // getting the info from the inputs for the book
-  // bookView.create = () => {
-  //   var book;
-  //   $('#new-form').empty();
-  //
-  //   book = new app.Book({
-  //     title: $('#book-title').val(),
-  //     author: $('#book-author').val(),
-  //     isbn: $('#book-isbn').val(),
-  //     image_url: $('#book-image-url').val(),
-  //     description: $('#book-description').val(),
-  //   });
-  //
-  //   $('#new-form').append(book.toHtml());
-  // };
+  getting the info from the inputs for the book
+  bookView.create = () => {
+    var book;
+    $('#new-form').empty();
 
-  // bookView.submit = event => {
-  //   event.preventDefault();
-  //   let book = new app.Book({
-  //     title: $('#book-title').val(),
-  //     author: $('#book-author').val(),
-  //     isbn: $('#book-isbn').val(),
-  //     image_url: $('#book-image-url').val(),
-  //     description: $('#book-description').val(),
-  //   });
-  //
-  //   app.Book.insertRecord();
-  //
-  //   window.location = '../';
-  // }
+    book = new app.Book({
+      title: $('#book-title').val(),
+      author: $('#book-author').val(),
+      isbn: $('#book-isbn').val(),
+      image_url: $('#book-image-url').val(),
+      description: $('#book-description').val(),
+    });
+
+    $('#new-form').append(book.toHtml());
+  };
+
+  bookView.submit = event => {
+    event.preventDefault();
+    let book = new app.Book({
+      title: $('#book-title').val(),
+      author: $('#book-author').val(),
+      isbn: $('#book-isbn').val(),
+      image_url: $('#book-image-url').val(),
+      description: $('#book-description').val(),
+    });
+
+    app.Book.insertRecord();
+
+    window.location = '../';
+  }
 
   module.bookView = bookView;
 }) (app)
