@@ -1,6 +1,10 @@
-var __API_URL__ = 'http://localhost:3000/api/v1/books';
-console.log('this is a test of book.js');
+'use strict'
 
+// var __API_URL__ = 'http://localhost:3000';// local use only
+var __API_URL__ = 'https://hs-dm-booklist.herokuapp.com/';// for deployed testing
+var app = app || {};
+
+// (function(module) {
 function Book(bookDataObj) {
 
   Object.keys(bookDataObj).forEach(key => {this[key] = bookDataObj[key];
@@ -22,7 +26,7 @@ Book.loadAll = function(rows) {
 };
 
 Book.fetchAll = function (callback) {
-  $.get(__API_URL__)
+  $.get(`${__API_URL__}/api/v1/books`)
     .then(data => {
       Book.loadAll(data)
       if (callback) callback();
