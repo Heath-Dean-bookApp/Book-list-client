@@ -9,13 +9,23 @@
     <link rel="stylesheet" href="styles/module.css">
     <link rel="icon" type="image/x-icon" href="https://avatars2.githubusercontent.com/u/18607604?v=3&s=200">
     <title>Book Time With Tim!</title>
-    <script id="book-list-template" type="text/x-handlebars-template">
-      <section class="clearfix">
-        <div>
-          <img class=book-img src="{{{image_url}}}">
-          <h2>{{title}}<br>{{author}}</h2>
-        </div>
+    <!-- this is for the error -->
+    <script type="text/x-handlebars-template" id="error-template">
+      <h3>Opps, something went wrong!</h3>
+      <p>{{status}}: {{statusText}}</p>
     </script>
+
+    <!-- this is for dispaying the Books -->
+    <script id="book-list-template" type="text/x-handlebars-template">
+      <li class="book-items" data-bookid={{book_id}}>
+        <img src={{image_url}}>
+          <div class="book-overlay">
+            <h3>{{title}}</h3>
+            <p>{{author}}</p>
+          </div>
+      </li>
+    </script>
+
   </head>
   <body>
     <header>
@@ -27,14 +37,27 @@
           <li class="tab" data-content="about"><a href="#" class="icon-address-book"> About</a></li>
     </header>
     <main class="clearfix">
-      <h3>My Books</h3>
-        <dt>Total Books:</dt><dd class="books"></dd>
-      <section id="books" class="tab-content">
+      <!-- this is adding the books to the page -->
+      <section class="book-view container">
+        <h2 class="view-title">My books</h2>
+        <section class="book-list">
+            <ul id="book-list">
+            </ul>
+        </section>
       </section>
-      <section id="about" class="tab-content">
+
+  
+      <section id="about" class="tab-content container">
+
+        <section id="books" class="tab-content">
+          <h3>My Books</h3>
+            <dt>Total Books:</dt><dd class="books"></dd>
+        </section>
+
         <header>
           Welcome to Book Time With Tim!
         </header>
+
         <section>
           <h5>Meet the Tims! </h5>
           <p> Our Interests:</p>
@@ -46,6 +69,7 @@
           <h6>About Our App!</h6>
             <p>Our app is a list of all books that can be found on Google Books! It's to help the user develop more of an interest in reading by being able to find books that they're interested in.</p>
         </section>
+
       </section>
     </main>
     <footer>
@@ -53,6 +77,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
     <script src="script/book.js"></script>
+    <script src="script/book-view.js"></script>
+    <script src="script/errorview.js"></script>
     <script>
       // Book.fetchAll();
     </script>
