@@ -52,7 +52,7 @@ var app = app || {};
 
   Book.deleteBook = function(ctx, callback) {
     $.ajax({
-      url: `${__API_URL__}/api/v1/books/${ctx.params.book_id}`,
+      url: `${__API_URL__}/api/v1/books/${ctx.book_id}`,
       method: 'DELETE'
     })
       .then(console.log(204))
