@@ -71,18 +71,24 @@ var app = app || {};
 
   // this is for updating the book.
 
-  bookView.updateBook = () => {
+  bookView.updateBook = (ctx) => {
     $('.container').hide();
     $('.update-book-form').show();
-    $('#new-form').on('submit', function(event) {
+    $('#update-book-form input[name="title"]').val(ctx.titel);
+    $('#update-book-form input[name="author"]').val(ctx.author);
+    $('#update-book-form input[name="isbn"]').val(ctx.isbn);
+    $('#update-book-form input[name="image_url"]').val(ctx.image_url);
+    $('#update-book-form textarea').val(ctx.description);
+
+    $('#update-book-form').on('submit', function(event) {
       event.preventDefault();
 
       let book = new app.Book({
-        title: $('#book-title').val(),
-        author: $('#book-author').val(),
-        isbn: $('#book-isbn').val(),
-        image_url: $('#book-image-url').val(),
-        description: $('#book-description').val(),
+        title: event.target.title.value,
+        author: event.target.author.value,
+        isbn: event.target.isbn.value,
+        image_url: event.target.image_url.value,
+        description: event.target.description.value,
       });
 
       app.Book.update(book);
