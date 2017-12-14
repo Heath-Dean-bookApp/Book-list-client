@@ -68,6 +68,7 @@ var app = app || {};
       data: book
     })
       .then(console.log(200))
+      .then(() => page('/'))
       .then(callback);
   };
 
