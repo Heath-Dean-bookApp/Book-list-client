@@ -50,5 +50,32 @@ var app = app || {};
       .catch(errorCallback);
   }
 
+  Book.deleteBook = function(callback) {
+    $.ajax({
+      url: `/articles/${this.article_id}`,
+      method: 'DELETE'
+    })
+      .then(console.log)
+      .then(callback);
+  };
+
+  Book.updateBook = function(callback) {
+    $.ajax({
+      url: `/articles/${this.article_id}`,
+      method: 'PUT',
+      data: {
+        author: this.author,
+        authorUrl: this.authorUrl,
+        body: this.body,
+        category: this.category,
+        publishedOn: this.publishedOn,
+        title: this.title,
+        author_id: this.author_id
+      }
+    })
+      .then(console.log)
+      .then(callback);
+  };
+
   module.Book = Book;
 }) (app)
