@@ -1,7 +1,5 @@
 'use strict'
 
-// REMOVE THIS 
-
 var __API_URL__ = 'http://localhost:3000';// local use only
 // var __API_URL__ = 'https://hs-dm-booklist.herokuapp.com';// for deployed testing
 var app = app || {};
@@ -52,27 +50,26 @@ var app = app || {};
       .catch(errorCallback);
   }
 
-  Book.deleteBook = function(callback) {
+  Book.deleteBook = function(ctx, callback) {
     $.ajax({
-      url: `/articles/${this.article_id}`,
+      url: `${__API_URL__}/api/v1/books/${ctx.params.book_id}`,
       method: 'DELETE'
     })
       .then(console.log)
       .then(callback);
   };
 
-  Book.updateBook = function(callback) {
+  Book.update = function(ctx, callback) {
     $.ajax({
-      url: `/articles/${this.article_id}`,
+      url: `${__API_URL__}/api/v1/books/${ctx.params.book_id}`,
       method: 'PUT',
       data: {
-        author: this.author,
-        authorUrl: this.authorUrl,
-        body: this.body,
-        category: this.category,
-        publishedOn: this.publishedOn,
-        title: this.title,
-        author_id: this.author_id
+        title: ctx.body.title,
+        author: ctx.body.author,
+        isbn: ctx.body.isbn,
+        image_url: ctx.body.image_url,
+        description: ctx.body.description,
+        book_id: ctx.params.book_id
       }
     })
       .then(console.log)
