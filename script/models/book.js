@@ -55,7 +55,7 @@ var app = app || {};
       url: `${__API_URL__}/api/v1/books/${ctx.book_id}`,
       method: 'DELETE'
     })
-      .then(console.log(204))
+
       .then(() => page('/'))
       .then(callback);
   };

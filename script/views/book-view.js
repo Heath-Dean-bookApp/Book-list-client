@@ -29,7 +29,6 @@ var app = app || {};
     });
     $('#update').on('click', function(event) {
       event.preventDefault();
-      console.log(ctx);
       bookView.updateBook(ctx);
     }
     )}
@@ -83,8 +82,9 @@ var app = app || {};
 
     $('#update-form').on('submit', function(event) {
       event.preventDefault();
-
+      console.log(ctx);
       let book = new app.Book({
+        book_id: ctx.book_id,
         title: event.target.title.value,
         author: event.target.author.value,
         isbn: event.target.isbn.value,
