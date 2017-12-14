@@ -12,7 +12,7 @@
     <base href=".">
     <!-- this is for the error -->
     <script type="text/x-handlebars-template" id="error-template">
-      <h3>Opps, something went wrong!</h3>
+      <h3>Oops, something went wrong!</h3>
       <p>{{status}}: {{statusText}}</p>
     </script>
 
@@ -52,10 +52,12 @@
         <div class="icon-menu"></div>
         <ul>
           <li class="tab" data-content="books"><a href="#" class="icon-home"> Home</a></li>
-          <li class="tab" data-content="about"><a href="#" class="icon-address-book"> About</a></li>
+          <li class="tab" data-content="about"><a href="#" class="icon-address-book">
+             About</a></li>
+          <li class="tab" data-content="about"><a href="/books/new">Add a Book</a>
     </header>
     <main class="clearfix">
-      
+
       <!-- this is adding the books to the page -->
       <section class="book-view container">
         <h2 class="view-title">My books</h2>
@@ -75,7 +77,7 @@
       <!-- adding a new book form -->
       <section class="new-book-form container">
         <h4>Add New Book</h4>
-        <form action="#" id="new-form">
+        <form id="new-form">
           <label>
             <input type="text" id="book-title" placeholder="Book Title" required>
           </label>
