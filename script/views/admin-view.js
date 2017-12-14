@@ -9,6 +9,9 @@ var __API_URL__ = 'http://localhost:3000';
   adminView.initAdminPage = function() {
     $('.container').hide();
     $('.admin-view').show();
+  };
+
+  adminView.verify = function(next) {
     $('#admin-form').on('submit', function(event) {
       event.preventDefault();
       let token = event.target.password.value;
@@ -19,9 +22,6 @@ var __API_URL__ = 'http://localhost:3000';
         })
         .catch(() => page('/'));
     })
-  };
-
-  adminView.verify = function(next) {
     if(!localStorage.token) $('.admin').hide();
       console.log('no password');
     else console.log('password:', localStorage.token)
