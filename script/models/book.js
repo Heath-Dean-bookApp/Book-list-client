@@ -60,11 +60,13 @@ var app = app || {};
       .then(callback);
   };
 
+
   Book.update = function(book, callback) {
     $.ajax({
       url: `${__API_URL__}/api/v1/books/${book.book_id}`,
       method: 'PUT',
       data: book
+
     })
       .then(console.log(200))
       .then(callback);

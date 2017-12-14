@@ -42,6 +42,10 @@
             <p>{{isbn}}</p>
             <p>{{description}}</p>
           </div>
+          <div class="admin">
+            <button type="button" id="update"><a href="/books/{{book_id}}/update"></a>Update Entry</button>
+            <button type="button" id="delete">Delete Entry</button>
+          </div>
         </li>
       </ul>
     </script>
@@ -99,6 +103,30 @@
           <button type="submit" id="new-book-button">Submit New Book</button>
         </form>
       </section>
+
+      <section class="update-book-form container">
+        <h4>Add New Book</h4>
+        <form id="update-form">
+          <label>
+            <input type="text" id="update-book-title" placeholder="Book Title" required>
+          </label>
+          <label>
+            <input type="text" id="update-book-author" placeholder="Book Author" required>
+          </label>
+          <label>
+            <input type="text" id="update-book-isbn" placeholder="ISBN" required>
+          </label>
+          <label>
+            <input type="text" id="update-book-image-url" placeholer="Image URL" required>
+          </label>
+          <label>
+            <textarea id="update-book-description" rows="8" cols="40" required></textarea>
+          </label>
+          <button type="submit" id="update-book-button">Update Book</button>
+        </form>
+      </section>
+
+
 
       <!-- about us page -->
       <section id="about" class="tab-content container">
