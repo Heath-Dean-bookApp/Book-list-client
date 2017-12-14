@@ -22,9 +22,14 @@ var app = app || {};
     $('.detail-view').empty();
     let template = Handlebars.compile($('#detail-view-template').text());
     $(`.detail-view`).append(template(ctx));
-    $('#new-form').on('submit', function(event) {
+    // $(`.admin`).hide();
+    $('#delete').on('click', function(event) {
       event.preventDefault();
-      app.Book.deleteBook();
+      app.Book.deleteBook(ctx);
+    });
+    $('#update').on('click', function(event) {
+      event.preventDefault();
+      bookView.updateBook();
     }
     )}
 
@@ -68,7 +73,7 @@ var app = app || {};
 
   bookView.updateBook = () => {
     $('.container').hide();
-    $('.new-book-form').show();
+    $('.update-book-form').show();
     $('#new-form').on('submit', function(event) {
       event.preventDefault();
 
