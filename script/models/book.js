@@ -70,7 +70,6 @@ var app = app || {};
         image_url: ctx.body.image_url,
         description: ctx.body.description,
         book_id: ctx.params.book_id
-        // test
       }
     })
       .then(console.log)
