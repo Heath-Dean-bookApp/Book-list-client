@@ -14,10 +14,11 @@ var app = app || {};
   }
 
   //shows just a single book
-  bookView.initSingleBookPage = function(ctx) {
+  bookView.initSingleBookPage = (ctx) => {
     $('.container').hide();
-    $('.detail-view-container').show();
-    let template = Handlebars.compile($('#detail-view-templete').text());
+    $('.detail-view').show();
+    $('.detail-view').empty();
+    let template = Handlebars.compile($('#detail-view-template').text());
     $(`.detail-view`).append(template(ctx));
   }
 
@@ -59,21 +60,6 @@ var app = app || {};
 
     $('#new-form').append(book.toHtml());
   };
-
-  // bookView.submit = event => {
-  //   event.preventDefault();
-  //   let book = new app.Book({
-  //     title: $('#book-title').val(),
-  //     author: $('#book-author').val(),
-  //     isbn: $('#book-isbn').val(),
-  //     image_url: $('#book-image-url').val(),
-  //     description: $('#book-description').val(),
-  //   });
-  //
-  //   app.Book.insertRecord(book);
-  //
-  //   window.location = '../';
-  // }
 
   module.bookView = bookView;
 

@@ -12,7 +12,7 @@
     <base href=".">
     <!-- this is for the error -->
     <script type="text/x-handlebars-template" id="error-template">
-      <h3>Opps, something went wrong!</h3>
+      <h3>Oops, something went wrong!</h3>
       <p>{{status}}: {{statusText}}</p>
     </script>
 
@@ -27,31 +27,37 @@
           </div>
       </li>
     </script>
-    <!-- -->
+
+    <!-- detail view of the a single book -->
     <script id="detail-view-template" type="text/x-handlebars-template">
-      <section class="detail-view container">
-        <article class="detail-view" "clearfix" data-author="{{author}}" data-isbn="{{isbn}}">
-          <header>
-            <h6>{{title}}</h6>
-          </header>
-          <div class="book-details">
-            <img id="book-image" src="{{image_url}}">
-            <p id="book-description">{{description}}</p>
+      <ul>
+        <li class="detail-view" data-bookid={{book_id}}>
+          <img src="{{image_url}}">
+          <div class="book-overlay">
+            <h3>{{title}}</h3>
+            <p>{{author}}</p>
+            <p>{{isbn}}</p>
+            <p>{{description}}</p>
           </div>
-      </section>
+        </li>
+      </ul>
     </script>
 
   </head>
   <body>
+    <!-- static info at the top of the page -->
     <header>
       <h1>Book Time With Tim!</h1>
       <nav class="main-nav">
         <div class="icon-menu"></div>
         <ul>
           <li class="tab" data-content="books"><a href="#" class="icon-home"> Home</a></li>
-          <li class="tab" data-content="about"><a href="#" class="icon-address-book"> About</a></li>
+          <li class="tab" data-content="about"><a href="#" class="icon-address-book">
+             About</a></li>
+          <li class="tab" data-content="about"><a href="/books/new">Add a Book</a>
     </header>
     <main class="clearfix">
+
       <!-- this is adding the books to the page -->
       <section class="book-view container">
         <h2 class="view-title">My books</h2>
@@ -61,9 +67,17 @@
         </section>
       </section>
 
+      <!-- place for the single book to go -->
+      <section class="detail-view container">
+        <h2>Book details</h2>
+        <section id="book-details"></section>
+      </section>
+
+
+      <!-- adding a new book form -->
       <section class="new-book-form container">
         <h4>Add New Book</h4>
-        <form action="#" id="new-form">
+        <form id="new-form">
           <label>
             <input type="text" id="book-title" placeholder="Book Title" required>
           </label>
@@ -83,6 +97,7 @@
         </form>
       </section>
 
+      <!-- about us page -->
       <section id="about" class="tab-content container">
 
         <section id="books" class="tab-content">
