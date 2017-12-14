@@ -55,24 +55,20 @@ var app = app || {};
       url: `${__API_URL__}/api/v1/books/${ctx.params.book_id}`,
       method: 'DELETE'
     })
-      .then(console.log)
+      .then(console.log(204))
+      .then(() => page('/'))
       .then(callback);
   };
 
-  Book.update = function(ctx, callback) {
+
+  Book.update = function(book, callback) {
     $.ajax({
-      url: `${__API_URL__}/api/v1/books/${ctx.params.book_id}`,
+      url: `${__API_URL__}/api/v1/books/${book.book_id}`,
       method: 'PUT',
-      data: {
-        title: ctx.body.title,
-        author: ctx.body.author,
-        isbn: ctx.body.isbn,
-        image_url: ctx.body.image_url,
-        description: ctx.body.description,
-        book_id: ctx.params.book_id
-      }
+      data: book
+
     })
-      .then(console.log)
+      .then(console.log(200))
       .then(callback);
   };
 

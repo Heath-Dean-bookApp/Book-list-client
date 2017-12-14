@@ -22,7 +22,11 @@ var app = app || {};
     $('.detail-view').empty();
     let template = Handlebars.compile($('#detail-view-template').text());
     $(`.detail-view`).append(template(ctx));
-  }
+    $('#new-form').on('submit', function(event) {
+      event.preventDefault();
+      app.Book.deleteBook();
+    }
+    )}
 
   //shows just the entry inputs for the new book.
   bookView.initNewBookPage = () => {
@@ -40,11 +44,8 @@ var app = app || {};
       });
 
       app.Book.insertRecord(book);
-
-
     }
     )};
-
 
   // getting the info from the inputs for the book
 
@@ -62,6 +63,27 @@ var app = app || {};
 
     $('#new-form').append(book.toHtml());
   };
+
+  // this is for updating the book.
+
+  bookView.updateBook = () => {
+    $('.container').hide();
+    $('.new-book-form').show();
+    $('#new-form').on('submit', function(event) {
+      event.preventDefault();
+
+      let book = new app.Book({
+        title: $('#book-title').val(),
+        author: $('#book-author').val(),
+        isbn: $('#book-isbn').val(),
+        image_url: $('#book-image-url').val(),
+        description: $('#book-description').val(),
+      });
+
+      app.Book.update(book);
+
+    }
+    )};
 
   module.bookView = bookView;
 
