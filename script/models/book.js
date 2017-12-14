@@ -23,15 +23,16 @@ var app = app || {};
     return template(this);
   };
 
-  Book.prototype.insertRecord = function(callback) {
-    $.post('/books/new', {title: this.title, author: this.author, isbn: this.isbn, image_url: this.image_url, description: this.description})
+  Book.insertRecord = function(book) {
+    $.post(`${__API_URL__}/api/v1/books`, book)
       .then(console.log)
-      .then(callback);
+      .then(() => page('/'))
+
   };
 
   Book.loadAll = function(rows) {
     rows.sort((a,b) => a.title - b.title);
-    rows.map(row => Book.all.push(new Book(row)));
+    Book.all = rows.map(row => new Book(row));
     console.log('load all book.all', Book.all);
   };
 
@@ -42,9 +43,9 @@ var app = app || {};
       .catch(errorCallback);
   }
 
-  Book.fetchOne = callback => {
-    $.get(`${__API_URL__}/api/v1/books/:id`)
-      .then(Book.loadAll)
+  Book.fetchOne = (ctx, callback) => {
+    $.get(`${__API_URL__}/api/v1/books/${ctx.params.book_id}`)
+      .then(results => ctx.book =results[0])
       .then(callback)
       .catch(errorCallback);
   }

@@ -28,7 +28,7 @@ var app = app || {};
   }
 
 
-  getting the info from the inputs for the book
+  // getting the info from the inputs for the book
   bookView.create = () => {
     var book;
     $('#new-form').empty();
