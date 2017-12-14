@@ -1,5 +1,7 @@
 'use strict';
 
+// REMOVE THIS 
+
 var app = app || {};
 
 (function(module) {
