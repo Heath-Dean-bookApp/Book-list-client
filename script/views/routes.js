@@ -16,8 +16,8 @@ page('/books/:book_id/update'
   , ctx => app.bookView.updateBook(ctx)
 );
 page('/books/:book_id'
-  , (ctx, next) => app.Book.fetchOne(ctx, (next) => app.bookView.initSingleBookPage(ctx, next))
-  // , (ctx) => app.adminView.verify(ctx)
+  , (ctx, next) => app.Book.fetchOne(ctx, () => app.bookView.initSingleBookPage(ctx, next))
+  , (ctx, next) => app.adminView.verify(ctx, next)
 );
 page('/admin'
   , ctx => app.adminView.initAdminPage()

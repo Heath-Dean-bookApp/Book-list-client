@@ -17,27 +17,22 @@ var __API_URL__ = 'http://localhost:3000';
       console.log('inside the adminPage');
 
       $.get(`${__API_URL__}/api/v1/admin`, {token})
-        .then(console.log('inside the get'))
-        .then(() => page('/'))
-        // .then(res => {
-        //   if (res) console.log('token')
-        //   else console.log('no token');
-        //   page('/');
-        })
         .then(res => {
+          if (res) console.log('token')
+          else console.log('no token');
           page('/');
         })
     })
   };
 
-  adminView.verify = function(ctx, next) {
+  adminView.verify = function() {
     if (!localStorage.token) {
-      $('.admin').addClass('admin-only');
+      $('#admin').hide();
+      console.log('this is no localStorage');
     } else {
-      console.log('admin verify running');
-      $('.admin').show();
+      $('#admin').show();
+      console.log('this does have localStorage');
     }
   }
-
   module.adminView = adminView;
 })(app)

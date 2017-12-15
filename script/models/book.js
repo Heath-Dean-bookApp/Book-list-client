@@ -34,7 +34,7 @@ var app = app || {};
   Book.loadAll = function(rows) {
     rows.sort((a,b) => a.title - b.title);
     Book.all = rows.map(row => new Book(row));
-    console.log('load all book.all', Book.all);
+    // console.log('load all book.all', Book.all);
   };
 
   Book.fetchAll = callback => {
@@ -45,7 +45,6 @@ var app = app || {};
   }
 
   Book.fetchOne = (ctx, callback) => {
-    console.log('fetch one running');
     app.adminView.verify();
     $.get(`${__API_URL__}/api/v1/books/${ctx.params.book_id}`)
       .then(results => ctx.book =results[0])
@@ -55,7 +54,7 @@ var app = app || {};
 
   Book.deleteBook = function(ctx, callback) {
     $.ajax({
-      url: `${__API_URL__}/api/v1/books/${ctx.book_id}`,
+      url: `${__API_URL__}/api/v1/books/${ctx.params.book_id}`,
       method: 'DELETE'
     })
 
