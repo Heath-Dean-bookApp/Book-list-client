@@ -6,26 +6,32 @@ var __API_URL__ = 'http://localhost:3000';
 (function (module) {
   const adminView = {};
 
-  adminView.initAdminPage = function() {
+  adminView.initAdminPage = function (ctx, next) {
     $('.container').hide();
     $('.admin-view').show();
+
     $('#admin-form').on('submit', function(event) {
       event.preventDefault();
       let token = event.target.password.value;
+      localStorage.token = token;
 
-      $.get(`${__API_URL__}/admin`, {token})
-        .then(() => {
-          localStorage.token = true;
+      $.get(`${__API_URL__}/api/v1/admin`, {token})
+        .then(res => {
+          if (res) console.log('token')
+          else console.log('no token');
+          page('/');
         })
-        .catch(() => page('/'));
+        .then(res => {
+          page('/');
+        })
     })
   };
 
-  adminView.verify = function(next) {
-    if(!localStorage.token) $('.admin').hide();
-      console.log('no password');
-    else console.log('password:', localStorage.token)
-    next();
+  adminView.verify = function(ctx, next) {
+    // if(!localStorage.token) $('.admin').addClass('admin-only');
+    // else
+    console.log('admin verify running');
+    $('.admin').show();
   }
 
   module.adminView = adminView;

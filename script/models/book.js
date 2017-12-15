@@ -44,6 +44,8 @@ var app = app || {};
   }
 
   Book.fetchOne = (ctx, callback) => {
+    console.log('fetch one running');
+    app.adminView.verify();
     $.get(`${__API_URL__}/api/v1/books/${ctx.params.book_id}`)
       .then(results => ctx.book =results[0])
       .then(callback)
