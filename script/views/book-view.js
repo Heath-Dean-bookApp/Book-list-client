@@ -16,12 +16,15 @@ var app = app || {};
   }
 
   //shows just a single book
-  bookView.initSingleBookPage = (ctx) => {
+  bookView.initSingleBookPage = (ctx, next) => {
     $('.container').hide();
     $('.detail-view').show();
     $('.detail-view').empty();
+    $('.admin').hide();
     let template = Handlebars.compile($('#detail-view-template').text());
-    $(`.detail-view`).append(template(ctx));
+    console.log('ctx', ctx);
+    $(`.detail-view`).append(template(ctx.book));
+    console.log('single book page running');
     // $(`.admin`).hide();
     $('#delete').on('click', function(event) {
       event.preventDefault();
@@ -31,6 +34,7 @@ var app = app || {};
       event.preventDefault();
       bookView.updateBook(ctx);
     }
+    // next();
     )}
 
   //shows just the entry inputs for the new book.
@@ -53,23 +57,6 @@ var app = app || {};
       module.Book.insertRecord(book);
     }
     )};
-
-  // getting the info from the inputs for the book
-
-  // bookView.create = () => {
-  //   var book;
-  //   $('#new-form').empty();
-  //
-  //   book = new module.Book({
-  //     title: $('#book-title').val(),
-  //     author: $('#book-author').val(),
-  //     isbn: $('#book-isbn').val(),
-  //     image_url: $('#book-image-url').val(),
-  //     description: $('#book-description').val(),
-  //   });
-  //
-  //   $('#new-form').append(book.toHtml());
-  // };
 
   // this is for updating the book.
 
