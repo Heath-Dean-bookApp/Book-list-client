@@ -4,5 +4,29 @@ header {
 }
 
 header h1 {
+  font-size: 50px;
+  font-family: 'Bangers', cursive;
+  margin-bottom: 10px;
+}
+
+h2 {
   font-size: 30px;
+  font-family: 'Bangers', cursive;
+}
+
+h3 {
+  font-size: 20px;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+  font-family: 'Contrail One', cursive;
+}
+
+h4 {
+  font-size: 20px;
+  font-family: 'Contrail One', cursive;
+}
+
+a {
+  color: white;
+  font-family: 'Contrail One', cursive;
 }

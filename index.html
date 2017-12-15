@@ -10,7 +10,11 @@
     <link rel="stylesheet" href="styles/base.css">
     <link rel="stylesheet" href="styles/layout.css">
     <link rel="stylesheet" href="styles/modules/book-main.css">
+    <link rel="stylesheet" href="styles/modules/header.css">
+    <link rel="stylesheet" href="styles/modules/detail-main.css">
+    <link rel="stylesheet" href="styles/modules/admin-main.css">
     <link rel="icon" type="image/x-icon" href="https://avatars2.githubusercontent.com/u/18607604?v=3&s=200">
+    <link href="https://fonts.googleapis.com/css?family=Bangers|Contrail+One|Pompiere" rel="stylesheet">
     <title>Book Time With Tim!</title>
     <base href=".">
     <!-- this is for the error -->
@@ -25,8 +29,8 @@
         <img src={{image_url}}>
           <div class="book-overlay">
             <h3>{{title}}</h3>
-            <p>{{author}}</p>
-            <a href="/books/{{book_id}}">Click to see more!!!!</a>
+            <h4>{{author}}</h4>
+            <p><a href="/books/{{book_id}}">Click to see more!!!!</a><p>
           </div>
       </li>
     </script>
@@ -36,11 +40,11 @@
       <ul>
         <li class="detail-view" data-bookid={{book_id}}>
           <img src="{{image_url}}">
-          <div class="book-overlay">
+          <div class="detail-info">
             <h3>{{title}}</h3>
-            <p>{{author}}</p>
-            <p>{{isbn}}</p>
-            <p>{{description}}</p>
+            <p class="about-details">* {{author}}</p>
+            <p class="about-details">* {{isbn}}</p>
+            <p class="des-details">{{description}}</p>
           </div>
           <div class="admin">
             <button type="button" id="update"><a href="/books/{{book_id}}/update"></a>Update Entry</button>
@@ -55,14 +59,18 @@
     <!-- static info at the top of the page -->
     <header>
       <h1>Book Time With Tim!</h1>
-      <nav class="main-nav">
-        <div class="icon-menu"></div>
-        <ul>
-          <li class="tab" data-content="books"><a href="#" class="icon-home"> Home</a></li>
-          <li class="tab" data-content="about"><a href="#" class="icon-address-book">
-             About</a></li>
-          <li class="tab" data-content="add-book"><a href="/books/new">Add a Book</a>
-          <li class="tab" data-content="admin"><a href="/books/new">Admin</a>
+      <nav class="mobile">
+        <button class="NavBut"></button>
+          <div class="navTab">
+            <ul class="main">
+              <li class="tab" data-content="books"><a href="#" class="icon-home"> Home</a></li>
+              <li class="tab" data-content="about"><a href="#" class="icon-address-book">
+                 About</a></li>
+              <li class="tab" data-content="add-book"><a href="/books/new">Add a Book</a>
+              <li class="tab" data-content="admin"><a href="/books/new">Admin</a>
+            </ul>
+          </div>
+      </nav>
     </header>
     <main class="clearfix">
 
@@ -96,12 +104,12 @@
             <input type="text" id="book-isbn" placeholder="ISBN" required>
           </label>
           <label>
-            <input type="text" id="book-image-url" placeholer="Image URL" required>
+            <input type="text" id="book-image-url" placeholder="Image URL" required>
           </label>
           <label>
             <textarea id="book-description" rows="8" cols="40" required></textarea>
           </label>
-          <button type="submit" id="new-book-button">Submit New Book</button>
+          <button type="submit" id="new-book-button">Add New Book</button>
         </form>
       </section>
 
@@ -161,6 +169,7 @@
     <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+    <script src="script/views/hanburger-menu.js"></script>
     <script src="script/models/book.js"></script>
     <script src="script/views/book-view.js"></script>
     <script src="script/views/errorview.js"></script>
