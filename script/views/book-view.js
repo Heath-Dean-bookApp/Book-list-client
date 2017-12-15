@@ -41,7 +41,7 @@ var app = app || {};
     $('.container').hide();
     $('.new-book-form').show();
     $('#new-form')[0].reset();
-    $('#new-form').on('submit', function(event) {
+    $('#new-form').one('submit', function(event) {
       console.log('this is event', event);
       event.preventDefault();
 
@@ -102,6 +102,27 @@ var app = app || {};
     }
     )};
 
+  //method to search for books
+  bookView.initSearchFormPage = (ctx, next) => {
+    $('.container').hide();
+    $('.search-view').show();
+
+    $('#search-form').on('submit', function(event) {
+      event.preventDefault();
+      let book = new app.Book({
+        author: event.target.author.value,
+        title: event.target.title.value,
+        isbn: event.target.isbn.value
+      });
+    })
+  }
+
+  //method to display search results
+  bookView.initSearchResultsPage = (callback) => {
+    $('.container').hide();
+    $('.search-results').show();
+
+  }
   module.bookView = bookView;
 
 }) (app)

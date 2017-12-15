@@ -23,6 +23,10 @@ page('/admin'
   , ctx => app.adminView.initAdminPage()
 );
 
+page('/books/search'
+  ,  ctx => app.bookView.initSearchFormPage()
+);
+
 page();
 
 // page('/', ctx => app.Book.fetchAll(app.bookView.initIndexPage));
