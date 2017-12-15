@@ -23,6 +23,12 @@ var app = app || {};
     return template(this);
   };
 
+  Book.prototype.findOne = function(ctx){
+    $.get(`${__API_URL__}/api/v1/books/find/${ctx.isbn}`)
+      .then(results => Book.create)
+      .catch(errorCallback);
+  }
+
   Book.insertRecord = function(book) {
     console.log('this is book',book);
     $.post(`${__API_URL__}/api/v1/books`, book)
@@ -74,6 +80,13 @@ var app = app || {};
       .then(() => page('/'))
       .then(callback);
   };
+
+  Book.find = function(book, callback) {
+    $.get(`${__API_URL__}/api/v1/books/find`)
+      .then(results => Book.loadall)
+      .then(callback);
+      .catch(errorCallback);
+  }
 
   module.Book = Book;
 }) (app)
