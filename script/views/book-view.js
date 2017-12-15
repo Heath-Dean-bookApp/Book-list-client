@@ -31,7 +31,7 @@ var app = app || {};
     });
     $('#update').on('click', function(event) {
       event.preventDefault();
-      // bookView.updateBook();
+      bookView.updateBook(ctx);
     }
     // next();
     )}
@@ -77,16 +77,17 @@ var app = app || {};
   bookView.updateBook = (ctx) => {
     $('.container').hide();
     $('.update-book-form').show();
-    $('#update-book-form input[name="title"]').val(ctx.titel);
-    $('#update-book-form input[name="author"]').val(ctx.author);
-    $('#update-book-form input[name="isbn"]').val(ctx.isbn);
-    $('#update-book-form input[name="image_url"]').val(ctx.image_url);
-    $('#update-book-form textarea').val(ctx.description);
+    $('#update-form input[name="title"]').val(ctx.title);
+    $('#update-form input[name="author"]').val(ctx.author);
+    $('#update-form input[name="isbn"]').val(ctx.isbn);
+    $('#update-form input[name="image_url"]').val(ctx.image_url);
+    $('#update-form textarea').val(ctx.description);
 
-    $('#update-book-form').on('submit', function(event) {
+    $('#update-form').on('submit', function(event) {
       event.preventDefault();
-
+      console.log(ctx);
       let book = new app.Book({
+        book_id: ctx.book_id,
         title: event.target.title.value,
         author: event.target.author.value,
         isbn: event.target.isbn.value,
