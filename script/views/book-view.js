@@ -40,7 +40,9 @@ var app = app || {};
   bookView.initNewBookPage = () => {
     $('.container').hide();
     $('.new-book-form').show();
+    $('#new-form')[0].reset();
     $('#new-form').on('submit', function(event) {
+      console.log('this is event', event);
       event.preventDefault();
 
       let book = new app.Book({
