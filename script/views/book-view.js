@@ -12,7 +12,7 @@ var app = app || {};
     $('.container').hide();
     $('.book-view').show();
     $('#book-list').empty();
-    app.Book.all.map(book => $(`#book-list`).append(book.toHtml()));
+    module.Book.all.map(book => $(`#book-list`).append(book.toHtml()));
   }
 
   //shows just a single book
@@ -25,7 +25,7 @@ var app = app || {};
     // $(`.admin`).hide();
     $('#delete').on('click', function(event) {
       event.preventDefault();
-      app.Book.deleteBook(ctx);
+      module.Book.deleteBook(ctx);
     });
     $('#update').on('click', function(event) {
       event.preventDefault();
@@ -38,38 +38,38 @@ var app = app || {};
     $('.container').hide();
     $('.new-book-form').show();
     $('#new-form')[0].reset();
-    $('#new-form').on('submit', function(event) {
+    $('#new-form').one('submit', function(event) {
       console.log('this is event', event);
       event.preventDefault();
 
-      let book = new app.Book({
+      let book = {
         title: $('#book-title').val(),
         author: $('#book-author').val(),
         isbn: $('#book-isbn').val(),
         image_url: $('#book-image-url').val(),
         description: $('#book-description').val(),
-      });
+      };
 
-      app.Book.insertRecord(book);
+      module.Book.insertRecord(book);
     }
     )};
 
   // getting the info from the inputs for the book
 
-  bookView.create = () => {
-    var book;
-    $('#new-form').empty();
-
-    book = new app.Book({
-      title: $('#book-title').val(),
-      author: $('#book-author').val(),
-      isbn: $('#book-isbn').val(),
-      image_url: $('#book-image-url').val(),
-      description: $('#book-description').val(),
-    });
-
-    $('#new-form').append(book.toHtml());
-  };
+  // bookView.create = () => {
+  //   var book;
+  //   $('#new-form').empty();
+  //
+  //   book = new module.Book({
+  //     title: $('#book-title').val(),
+  //     author: $('#book-author').val(),
+  //     isbn: $('#book-isbn').val(),
+  //     image_url: $('#book-image-url').val(),
+  //     description: $('#book-description').val(),
+  //   });
+  //
+  //   $('#new-form').append(book.toHtml());
+  // };
 
   // this is for updating the book.
 
@@ -84,8 +84,7 @@ var app = app || {};
 
     $('#update-form').on('submit', function(event) {
       event.preventDefault();
-      console.log(ctx);
-      let book = new app.Book({
+      let book = new module.Book({
         book_id: ctx.book_id,
         title: event.target.title.value,
         author: event.target.author.value,
@@ -94,7 +93,7 @@ var app = app || {};
         description: event.target.description.value,
       });
 
-      app.Book.update(book);
+      module.Book.update(book);
 
     }
     )};

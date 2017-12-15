@@ -24,7 +24,7 @@ var app = app || {};
   };
 
   Book.insertRecord = function(book) {
-    console.log('this is book',book);
+    // debugger;
     $.post(`${__API_URL__}/api/v1/books`, book)
       .then(console.log)
       .then(() => page('/'))
@@ -77,7 +77,7 @@ var app = app || {};
 }) (app)
 
 
-
-// PORT=3000
-// CLIENT_URL=http://localhost:8080
-// DATABASE_URL=postgres://localhost:5432/task_app
+//
+// export PORT=3000
+// export CLIENT_URL=http://localhost:8080
+// export DATABASE_URL=postgres://localhost:5432/task_app
