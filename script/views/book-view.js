@@ -16,12 +16,14 @@ var app = app || {};
   }
 
   //shows just a single book
-  bookView.initSingleBookPage = (ctx) => {
+  bookView.initSingleBookPage = (ctx, next) => {
     $('.container').hide();
     $('.detail-view').show();
     $('.detail-view').empty();
     let template = Handlebars.compile($('#detail-view-template').text());
-    $(`.detail-view`).append(template(ctx));
+    console.log('ctx', ctx);
+    $(`.detail-view`).append(template(ctx.book));
+    console.log('single book page running');
     // $(`.admin`).hide();
     $('#delete').on('click', function(event) {
       event.preventDefault();
@@ -29,8 +31,9 @@ var app = app || {};
     });
     $('#update').on('click', function(event) {
       event.preventDefault();
-      bookView.updateBook();
+      // bookView.updateBook();
     }
+    // next();
     )}
 
   //shows just the entry inputs for the new book.
