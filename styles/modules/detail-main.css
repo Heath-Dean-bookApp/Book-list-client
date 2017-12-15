@@ -13,3 +13,7 @@
   font-size: 20px;
   margin-bottom: 20px;
 }
+
+#update, #delete {
+  visibility: hidden;
+}
