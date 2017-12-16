@@ -13,7 +13,7 @@ var app = app || {};
 
   function errorCallback(err) {
     console.error(err);
-    module.errorview.initErrorPage(err);
+    app.errorview.initErrorPage(err);
   }
 
   Book.all = [];
@@ -40,7 +40,6 @@ var app = app || {};
   Book.loadAll = function(rows) {
     rows.sort((a,b) => a.title - b.title);
     Book.all = rows.map(row => new Book(row));
-    // console.log('load all book.all', Book.all);
   };
 
   Book.fetchAll = callback => {
@@ -82,15 +81,15 @@ var app = app || {};
 
   Book.find = (book, callback) => {
     $.get(`${__API_URL__}/api/v1/books/find`, book)
-      .then(Book.loadall)
+      .then(Book.loadAll)
       .then(callback)
       .catch(errorCallback)
   }
 
   Book.findOne = isbn => {
     $.get(`${__API_URL__}/api/v1/books/find/${isbn}`)
-    .then(Book.create)
-    .catch(errorCallback);
+      .then(Book.create)
+      .catch(errorCallback);
   }
 
   module.Book = Book;

@@ -95,7 +95,7 @@ var app = app || {};
         title: event.target.title.value || '',
         isbn: event.target.isbn.value || '',
       };
-      console.log('dis is book', book)
+      console.log('this is book', book)
       module.Book.find(book, bookView.initSearchResultsPage);
 
       event.target.title.value = '';
@@ -109,7 +109,7 @@ var app = app || {};
     $('.container').hide();
     $('.search-results').show();
     $('#search-form').empty();
-    module.Book.all.map(book => $('#search-results').append(book.toHtml()));
+    app.Book.all.map(book => $('#search-results').append(book.toHtml()));
     $('#detail-link').text('Add to List').attr('href', '/');
     $('#detail-link').on('click', function(e) {
       module.Book.findOne($(this).parent().parent().parent().data())
