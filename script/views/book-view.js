@@ -104,17 +104,19 @@ var app = app || {};
 
   //method to search for books
   bookView.initSearchFormPage = function() {
+    console.log('search form page running');
     $('.container').hide();
     $('.search-view').show();
 
-    $('#search-form').on('submit', function(event) {
+    $('#search-form').one('submit', function(event) {
+
       event.preventDefault();
       let book = {
         author: event.target.author.value || '',
         title: event.target.title.value || '',
         isbn: event.target.isbn.value || '',
       };
-
+      console.log('dis is book', book)
       module.Book.find(book, bookView.initSearchResultsPage);
 
       event.target.title.value = '';
@@ -128,7 +130,7 @@ var app = app || {};
     $('.container').hide();
     $('.search-results').show();
     $('#search-form').empty();
-    module.Book.all.map(book => $('#search-form').append(book.toHtml()));
+    module.Book.all.map(book => $('#search-results').append(book.toHtml()));
     $('#detail-link').text('Add to List').attr('href', '/');
     $('#detail-link').on('click', function(e) {
       module.Book.findOne($(this).parent().parent().parent().data())
