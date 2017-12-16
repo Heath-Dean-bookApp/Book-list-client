@@ -30,7 +30,7 @@
           <div class="book-overlay">
             <h3>{{title}}</h3>
             <h4>{{author}}</h4>
-            <p><a href="/books/{{book_id}}">Click to see more!!!!</a><p>
+            <p><a id="#detail-link" href="/books/{{book_id}}">Click to see more!!!!</a><p>
           </div>
       </li>
     </script>
@@ -54,6 +54,19 @@
       </ul>
     </script>
 
+    <!-- search results template -->
+    <script id="search-results-template" type="text/x-handlebars-template">
+      <ul id="search-results">
+        <li class="results-view" data-bookid={{book_id}}>
+          <img src={{image_url}}>
+            <div class="book-overlay">
+              <h3>{{title}}</h3>
+              <h4>{{author}}</h4>
+              <p><a href="/books/{{book_id}}">Click to see more!!!!</a><p>
+            </div>
+      </ul>
+    </script>
+
     <!-- admin login form -->
 
   </head>
@@ -71,6 +84,7 @@
                  About</a></li>
               <li class="tab" data-content="add-book"><a href="/books/new">Add a Book</a>
               <li class="tab" data-content="admin"><a href="/admin">Admin</a>
+              <li class="tab" data-content="search"><a href="/books/search">Search Books</a>
             </ul>
           </div>
       </nav>
@@ -99,6 +113,28 @@
         <form id="admin-form">
           <input type="number" name="password" placeholder="12345">
           <button type="submit">Log In</button>
+        </form>
+      </section>
+
+      <section class="search-results container">
+        <h9>Search Results:</h9>
+        <section id="search-results"></section>
+      </section>
+
+      <!-- search bar -->
+      <section class="search-view container">
+        <h8>Search For a Book</h8>
+        <form id="search-form">
+          <label>
+            <input type="text" id="search-title" name="title" placeholder="Title">
+          </label>
+          <label>
+            <input type="text" id="search-author" name="author" placeholder="Author">
+          </label>
+          <label>
+            <input type="text" id="search-isbn" name="isbn" placeholder="ISBN">
+          </label>
+          <button type="submit" id="search-button">Search</button>
         </form>
       </section>
 

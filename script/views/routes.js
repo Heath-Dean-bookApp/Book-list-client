@@ -4,6 +4,8 @@
 //   page.base('/book-list-client');
 // }
 
+page('/books/search', ctx => app.bookView.initSearchFormPage());
+
 page('/'
   , (ctx, next) => app.Book.fetchAll(() => app.bookView.initIndexPage(ctx, next))
   , (ctx, next) => app.adminView.verify(ctx, next)
@@ -22,5 +24,7 @@ page('/books/:book_id'
 page('/admin'
   , ctx => app.adminView.initAdminPage()
 );
+
+
 
 page();
