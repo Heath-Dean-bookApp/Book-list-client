@@ -24,7 +24,7 @@ var app = app || {};
   };
 
   Book.insertRecord = function(book) {
-    console.log('this is book',book);
+    // debugger;
     $.post(`${__API_URL__}/api/v1/books`, book)
       .then(console.log)
       .then(() => page('/'))
@@ -34,7 +34,7 @@ var app = app || {};
   Book.loadAll = function(rows) {
     rows.sort((a,b) => a.title - b.title);
     Book.all = rows.map(row => new Book(row));
-    console.log('load all book.all', Book.all);
+    // console.log('load all book.all', Book.all);
   };
 
   Book.fetchAll = callback => {
@@ -45,7 +45,6 @@ var app = app || {};
   }
 
   Book.fetchOne = (ctx, callback) => {
-    console.log('fetch one running');
     app.adminView.verify();
     $.get(`${__API_URL__}/api/v1/books/${ctx.params.book_id}`)
       .then(results => ctx.book =results[0])
@@ -55,7 +54,7 @@ var app = app || {};
 
   Book.deleteBook = function(ctx, callback) {
     $.ajax({
-      url: `${__API_URL__}/api/v1/books/${ctx.book_id}`,
+      url: `${__API_URL__}/api/v1/books/${ctx.params.book_id}`,
       method: 'DELETE'
     })
 
@@ -80,6 +79,6 @@ var app = app || {};
 
 
 
-// PORT=3000
-// CLIENT_URL=http://localhost:8080
-// DATABASE_URL=postgres://localhost:5432/task_app
+// export PORT=3000
+// export CLIENT_URL=http://localhost:8080
+// export DATABASE_URL=postgres://localhost:5432/books_app
