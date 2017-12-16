@@ -81,16 +81,18 @@ var app = app || {};
       .then(callback);
   };
 
-  Book.find = (book, callback) =>
-    $.get(`${__API_URL__}/api/v1/books/find`)
+  Book.find = (book, callback) => {
+    $.get(`${__API_URL__}/api/v1/books/find`, book)
       .then(Book.loadall)
-      .then(callback);
-      .catch(errorCallback);
+      .then(callback)
+      .catch(errorCallback)
+  }
 
-  Book.findOne = isbn =>
+  Book.findOne = isbn => {
     $.get(`${__API_URL__}/api/v1/books/find/${isbn}`)
     .then(Book.create)
     .catch(errorCallback);
+  }
 
   module.Book = Book;
 }) (app)

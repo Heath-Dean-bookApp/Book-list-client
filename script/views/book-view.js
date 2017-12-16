@@ -113,7 +113,7 @@ var app = app || {};
         author: event.target.author.value || '',
         title: event.target.title.value || '',
         isbn: event.target.isbn.value || '',
-      );
+      };
 
       module.Book.find(book, bookView.initSearchResultsPage);
 
