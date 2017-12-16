@@ -15,7 +15,3 @@ var app = app || {};
   };
   module.errorView = errorView;
 }) (app)
-
-// errorView.errorCallback = (errorView) => {
-//   errorView.initErrorPage(errorView);
-// };

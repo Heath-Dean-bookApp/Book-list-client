@@ -10,7 +10,7 @@ var __API_URL__ = 'http://localhost:3000';
     $('.container').hide();
     $('.admin-view').show();
 
-    $('#admin-form').on('submit', function(event) {
+    $('#admin-form').one('submit', function(event) {
       event.preventDefault();
       let token = event.target.password.value;
       localStorage.token = token;
@@ -21,18 +21,17 @@ var __API_URL__ = 'http://localhost:3000';
           else console.log('no token');
           page('/');
         })
-        .then(res => {
-          page('/');
-        })
     })
   };
 
-  adminView.verify = function(ctx, next) {
-    // if(!localStorage.token) $('.admin').addClass('admin-only');
-    // else
-    console.log('admin verify running');
-    $('.admin').show();
+  adminView.verify = function() {
+    if (!localStorage.token) {
+      $('.admin').hide();
+      console.log('NO, Does not have localStorage');
+    } else {
+      $('.admin').show();
+      console.log('YES, Has localStorage');
+    }
   }
-
   module.adminView = adminView;
 })(app)

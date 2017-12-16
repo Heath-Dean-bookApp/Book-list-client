@@ -12,7 +12,7 @@ var app = app || {};
     $('.container').hide();
     $('.book-view').show();
     $('#book-list').empty();
-    app.Book.all.map(book => $(`#book-list`).append(book.toHtml()));
+    module.Book.all.map(book => $(`#book-list`).append(book.toHtml()));
   }
 
   //shows just a single book
@@ -21,19 +21,16 @@ var app = app || {};
     $('.detail-view').show();
     $('.detail-view').empty();
     let template = Handlebars.compile($('#detail-view-template').text());
-    console.log('ctx', ctx);
     $(`.detail-view`).append(template(ctx.book));
-    console.log('single book page running');
-    // $(`.admin`).hide();
+    app.adminView.verify();
     $('#delete').on('click', function(event) {
       event.preventDefault();
-      app.Book.deleteBook(ctx);
+      module.Book.deleteBook(ctx);
     });
     $('#update').on('click', function(event) {
       event.preventDefault();
       bookView.updateBook(ctx);
     }
-    // next();
     )}
 
   //shows just the entry inputs for the new book.
@@ -41,63 +38,45 @@ var app = app || {};
     $('.container').hide();
     $('.new-book-form').show();
     $('#new-form')[0].reset();
+
+    $('.admin').hide();
     $('#new-form').one('submit', function(event) {
-      console.log('this is event', event);
       event.preventDefault();
 
-      let book = new app.Book({
+      let book = {
         title: $('#book-title').val(),
         author: $('#book-author').val(),
         isbn: $('#book-isbn').val(),
         image_url: $('#book-image-url').val(),
         description: $('#book-description').val(),
-      });
+      };
 
-      app.Book.insertRecord(book);
+      module.Book.insertRecord(book);
     }
     )};
-
-  // getting the info from the inputs for the book
-
-  bookView.create = () => {
-    var book;
-    $('#new-form').empty();
-
-    book = new app.Book({
-      title: $('#book-title').val(),
-      author: $('#book-author').val(),
-      isbn: $('#book-isbn').val(),
-      image_url: $('#book-image-url').val(),
-      description: $('#book-description').val(),
-    });
-
-    $('#new-form').append(book.toHtml());
-  };
 
   // this is for updating the book.
 
   bookView.updateBook = (ctx) => {
     $('.container').hide();
     $('.update-book-form').show();
-    $('#update-form input[name="title"]').val(ctx.title);
-    $('#update-form input[name="author"]').val(ctx.author);
-    $('#update-form input[name="isbn"]').val(ctx.isbn);
-    $('#update-form input[name="image_url"]').val(ctx.image_url);
-    $('#update-form textarea').val(ctx.description);
+    $('#update-form input[name="title"]').val(ctx.book.title);
+    $('#update-form input[name="author"]').val(ctx.book.author);
+    $('#update-form input[name="isbn"]').val(ctx.book.isbn);
+    $('#update-form input[name="image_url"]').val(ctx.book.image_url);
+    $('#update-form textarea').val(ctx.book.description);
 
     $('#update-form').on('submit', function(event) {
       event.preventDefault();
-      console.log(ctx);
-      let book = new app.Book({
-        book_id: ctx.book_id,
+      let book = new module.Book({
+        book_id: ctx.params.book_id,
         title: event.target.title.value,
         author: event.target.author.value,
         isbn: event.target.isbn.value,
         image_url: event.target.image_url.value,
         description: event.target.description.value,
       });
-
-      app.Book.update(book);
+      module.Book.update(book);
 
     }
     )};
@@ -140,7 +119,3 @@ var app = app || {};
   module.bookView = bookView;
 
 }) (app)
-
-// $(function() {
-//   app.Book.fetchAll(app.bookView.initIndexPage);
-// })
