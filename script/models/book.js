@@ -78,7 +78,7 @@ var app = app || {};
 }) (app)
 
 
-//
+
 // export PORT=3000
 // export CLIENT_URL=http://localhost:8080
-// export DATABASE_URL=postgres://localhost:5432/task_app
+// export DATABASE_URL=postgres://localhost:5432/books_app

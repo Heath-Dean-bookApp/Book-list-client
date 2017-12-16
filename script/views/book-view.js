@@ -22,6 +22,7 @@ var app = app || {};
     $('.detail-view').empty();
     let template = Handlebars.compile($('#detail-view-template').text());
     $(`.detail-view`).append(template(ctx.book));
+    app.adminView.verify();
     $('#delete').on('click', function(event) {
       event.preventDefault();
       module.Book.deleteBook(ctx);
@@ -30,7 +31,6 @@ var app = app || {};
       event.preventDefault();
       bookView.updateBook(ctx);
     }
-    // next();
     )}
 
   //shows just the entry inputs for the new book.
@@ -83,7 +83,3 @@ var app = app || {};
   module.bookView = bookView;
 
 }) (app)
-
-// $(function() {
-//   app.Book.fetchAll(app.bookView.initIndexPage);
-// })

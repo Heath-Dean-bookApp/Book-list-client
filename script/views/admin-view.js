@@ -14,7 +14,6 @@ var __API_URL__ = 'http://localhost:3000';
       event.preventDefault();
       let token = event.target.password.value;
       localStorage.token = token;
-      console.log('inside the adminPage');
 
       $.get(`${__API_URL__}/api/v1/admin`, {token})
         .then(res => {
@@ -27,11 +26,11 @@ var __API_URL__ = 'http://localhost:3000';
 
   adminView.verify = function() {
     if (!localStorage.token) {
-      $('#admin').hide();
-      console.log('this is no localStorage');
+      $('.admin').hide();
+      console.log('NO, Does not have localStorage');
     } else {
-      $('#admin').show();
-      console.log('this does have localStorage');
+      $('.admin').show();
+      console.log('YES, Has localStorage');
     }
   }
   module.adminView = adminView;

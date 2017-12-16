@@ -17,21 +17,10 @@ page('/books/:book_id/update'
 );
 page('/books/:book_id'
   , (ctx, next) => app.Book.fetchOne(ctx, () => app.bookView.initSingleBookPage(ctx, next))
-  , (ctx, next) => app.adminView.verify(ctx, next)
+  // , (ctx, next) => app.adminView.verify(ctx, next)
 );
 page('/admin'
   , ctx => app.adminView.initAdminPage()
 );
 
 page();
-
-// page('/', ctx => app.Book.fetchAll(app.bookView.initIndexPage));
-// page('/books/new', ctx => app.bookView.initNewBookPage(ctx));
-// page('/books/:book_id', ctx => app.Book.fetchOne(ctx, app.bookView.initSingleBookPage));
-// page('/admin', ctx => app.adminView.initAdminPage());
-
-
-
-
-// (ctx, next) => app.adminView.verify(ctx, next),
-// (ctx) => app.adminView.initAdminPage());
