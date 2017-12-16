@@ -110,7 +110,7 @@ var app = app || {};
     $('.search-results').show();
     $('#search-form').empty();
     app.Book.all.map(book => $('#search-results').append(book.toHtml()));
-    $('#detail-link').text('Add to List').attr('href', '/');
+    $('.detail-link a').text('Add to List').attr('href', '/');
     $('#detail-link').on('click', function(e) {
       module.Book.findOne($(this).parent().parent().parent().data())
     });
