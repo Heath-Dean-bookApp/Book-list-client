@@ -103,17 +103,23 @@ var app = app || {};
     )};
 
   //method to search for books
-  bookView.initSearchFormPage = (ctx, next) => {
+  bookView.initSearchFormPage = function() {
     $('.container').hide();
     $('.search-view').show();
 
     $('#search-form').on('submit', function(event) {
       event.preventDefault();
-      let book = new app.Book({
-        author: event.target.author.value,
-        title: event.target.title.value,
-        isbn: event.target.isbn.value
-      });
+      let book = {
+        author: event.target.author.value || '',
+        title: event.target.title.value || '',
+        isbn: event.target.isbn.value || '',
+      );
+
+      module.Book.find(book, bookView.initSearchResultsPage);
+
+      event.target.title.value = '';
+      event.target.author.value = '';
+      event.target.isbn.value = '';
     })
   }
 
@@ -121,6 +127,12 @@ var app = app || {};
   bookView.initSearchResultsPage = (callback) => {
     $('.container').hide();
     $('.search-results').show();
+    $('#search-form').empty();
+    module.Book.all.map(book => $('#search-form').append(book.toHtml()));
+    $('#detail-link').text('Add to List').attr('href', '/');
+    $('#detail-link').on('click', function(e) {
+      module.Book.findOne($(this).parent().parent().parent().data())
+    });
 
   }
   module.bookView = bookView;
