@@ -24,7 +24,7 @@ page('/admin'
 );
 
 page('/books/search'
-  ,  ctx => app.bookView.initSearchFormPage()
+  , ctx => app.bookView.initSearchFormPage()
 );
 
 page();
